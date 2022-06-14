@@ -6,6 +6,7 @@ This repository contains multiple Dockerfile with boilerplate projects. The aims
 
 - [Express](./express/)
 - [Express with Yarn](./express-yarn/)
+- [NestJS](./nestjs/)
 
 ## Maintainers
 
