@@ -24,4 +24,4 @@ RUN yarn install --production --frozen-lockfile
 
 COPY --from=builder /usr/src/app/dist ./dist
 
-CMD [ "node", "dist/index.js" ]
+CMD [ "node", "dist/main.js" ]
