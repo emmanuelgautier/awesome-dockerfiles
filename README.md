@@ -1,4 +1,4 @@
-# Awesome DockerFiles
+# Awesome DockerFiles [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
 
 Welcome to the Dockerfile Examples Repository! This repository is a comprehensive collection of Dockerfile examples for various programming languages, frameworks and package managers. Whether you are a beginner or an experienced developer, this resource will help you quickly get started with containerizing your applications using Docker.
 
