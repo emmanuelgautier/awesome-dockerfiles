@@ -1,8 +1,8 @@
-# NestJS Application Dockerfile Example
+# Express with NPM Application Dockerfile Example
 
 ## Description
 
-This repository provides a Dockerfile example for containerizing a NestJS application. NestJS is a powerful framework for building scalable and efficient server-side applications using TypeScript.
+This repository provides a Dockerfile example for containerizing an Express application using npm package manager. Express is one the most famous node framework for building scalable and efficient server-side applications.
 
 ## Getting Started
 
