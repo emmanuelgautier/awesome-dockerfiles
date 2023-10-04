@@ -4,7 +4,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
 
 ## Contents
 
-- Go
+- [Go](./go)
 - Java
     - Spring Boot
 - Node.js
@@ -30,7 +30,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
 
 Each example comes with a documented Dockerfile that demonstrates best practices and provides a starting point for containerizing applications built with the corresponding language or framework. The examples cover production-like environments, and include instructions on how to build and run the containers.
 
-## How to Use the Examples?
+## How to use an example Dockerfile?
 
 To get started, simply navigate to the relevant directory for your chosen language or framework. Inside each directory, you will find a Dockerfile along with any additional files required for building the Docker image. Follow the instructions provided in the README file to build and run the containerized application.
 
