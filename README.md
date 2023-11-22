@@ -14,7 +14,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - Vue App
     - React
     - Angular
-    - Next
+    - [Next](./next)
     - Nuxt
 - PHP
     - Laravel
