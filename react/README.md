@@ -1,30 +1,41 @@
-# React + TypeScript + Vite
+# React App Dockerfile Example
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Description
 
-Currently, two official plugins are available:
+This repository provides a Dockerfile example for containerizing a React app.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Getting Started
 
-## Expanding the ESLint configuration
+1. Copy the `Dockerfile` and files used in the Dockerfile in your application
+2. Build the Docker image by running the following command:
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
-
-- Configure the top-level `parserOptions` property like this:
-
-```js
-export default {
-  // other rules...
-  parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-  },
-}
+```bash
+docker build -t image-name .
 ```
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+3. Once the image is built successfully, you can run a container using the following command:
+
+```bash
+docker run image-name
+```
+
+If the container needs specifying port and volumes if the container needed it.
+
+4. Test your application container
+
+## Customization
+
+You can customize the Dockerfile example to fit your specific application needs. Here are a few areas you might consider modifying:
+
+- **Dependencies**: If your application requires additional dependencies, you can use the RUN command in the Dockerfile to install them. Make sure to update the appropriate package manager command based on your application setup.
+- **Environment Variables**: If your application requires environment variables, you can pass them to the container using the -e flag when running the docker run command.
+
+## Contributing
+
+Contributions to this Dockerfile example are welcome! If you have any improvements or suggestions, feel free to submit a pull request.
+
+Please ensure that your changes align with the best practices and conventions outlined in the Docker and language/framework documentation.
+
+## Disclaimer
+
+The Dockerfile example provided in this repository is for educational and reference purposes. It is important to review and adapt it to meet the specific security and performance requirements of your case before using it in a production environment.

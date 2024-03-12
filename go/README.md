@@ -1,8 +1,8 @@
-# Next App Dockerfile Example
+# Go server Dockerfile Example
 
 ## Description
 
-This repository provides a Dockerfile example for containerizing a Next app.
+This repository provides a Dockerfile example for containerizing a Go server.
 
 ## Getting Started
 
@@ -22,13 +22,6 @@ docker run image-name
 If the container needs specifying port and volumes if the container needed it.
 
 4. Test your application container
-
-## Customization
-
-You can customize the Dockerfile example to fit your specific application needs. Here are a few areas you might consider modifying:
-
-- **Dependencies**: If your application requires additional dependencies, you can use the RUN command in the Dockerfile to install them. Make sure to update the appropriate package manager command based on your application setup.
-- **Environment Variables**: If your application requires environment variables, you can pass them to the container using the -e flag when running the docker run command.
 
 ## Contributing
 
