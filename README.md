@@ -12,7 +12,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Express.js with Yarn](./express/express-yarn/)
     - [NestJS](./nestjs/)
     - Vue App
-    - React
+    - [React](./react/)
     - Angular
     - [Next](./next)
     - Nuxt

@@ -1,36 +1,41 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# React App Dockerfile Example
+
+## Description
+
+This repository provides a Dockerfile example for containerizing a React app.
 
 ## Getting Started
 
-First, run the development server:
+1. Copy the `Dockerfile` and files used in the Dockerfile in your application
+2. Build the Docker image by running the following command:
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+docker build -t image-name .
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+3. Once the image is built successfully, you can run a container using the following command:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+docker run image-name
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+If the container needs specifying port and volumes if the container needed it.
 
-## Learn More
+4. Test your application container
 
-To learn more about Next.js, take a look at the following resources:
+## Customization
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+You can customize the Dockerfile example to fit your specific application needs. Here are a few areas you might consider modifying:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Dependencies**: If your application requires additional dependencies, you can use the RUN command in the Dockerfile to install them. Make sure to update the appropriate package manager command based on your application setup.
+- **Environment Variables**: If your application requires environment variables, you can pass them to the container using the -e flag when running the docker run command.
 
-## Deploy on Vercel
+## Contributing
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Contributions to this Dockerfile example are welcome! If you have any improvements or suggestions, feel free to submit a pull request.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+Please ensure that your changes align with the best practices and conventions outlined in the Docker and language/framework documentation.
+
+## Disclaimer
+
+The Dockerfile example provided in this repository is for educational and reference purposes. It is important to review and adapt it to meet the specific security and performance requirements of your case before using it in a production environment.
