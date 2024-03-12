@@ -25,7 +25,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [FastAPI](./python/fastapi)
 - Ruby
     - Ruby On Rails
-- Rust
+- [Rust](./rust/)
 - .Net
 
 Each example comes with a documented Dockerfile that demonstrates best practices and provides a starting point for containerizing applications built with the corresponding language or framework. The examples cover production-like environments, and include instructions on how to build and run the containers.
