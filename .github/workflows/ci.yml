@@ -1,0 +1,60 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  list-dockerfiles:
+    runs-on: ubuntu-latest
+
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - id: set-matrix
+        run: echo "matrix=$(find . -type f -name 'Dockerfile' -exec dirname {} \; | sort -u | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
+
+  docker-build:
+    needs: list-dockerfiles
+    runs-on: ubuntu-latest
+
+    permissions:
+      packages: write
+
+    strategy:
+      fail-fast: false
+      matrix:
+        dockerfile: ${{ fromJson(needs.list-dockerfiles.outputs.matrix) }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Create Docker Image name
+        id: create-image-name
+        run: echo "image=ghcr.io/emmanuelgautier/awesome-dockerfiles/$(echo ${{ matrix.dockerfile }} | awk -F'/' '{print $NF}'):latest" >> $GITHUB_OUTPUT
+
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: Login to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.repository_owner }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Build and push
+        uses: docker/build-push-action@v5
+        with:
+          context: ${{ matrix.dockerfile }}
+          push: ${{ github.ref == 'refs/heads/main' }}
+          tags: ${{ steps.create-image-name.outputs.image }}
+          cache-from: type=registry,ref=${{ steps.create-image-name.outputs.image }}
+          cache-to: type=inline
