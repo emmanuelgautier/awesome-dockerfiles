@@ -13,7 +13,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [NestJS](./nestjs/)
     - Vue App
     - [React](./react/)
-    - Angular
+    - [Angular](./angular/)
     - [Next](./next)
     - Nuxt
 - PHP

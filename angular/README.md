@@ -1,27 +1,40 @@
-# Angular
+# Angular Dockerfile Example
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.0.3.
+This repository provides a Dockerfile example for containerizing an Angular app.
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Getting Started
 
-## Code scaffolding
+1. Copy the `Dockerfile` and files used in the Dockerfile in your application
+2. Build the Docker image by running the following command:
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+```bash
+docker build -t image-name .
+```
 
-## Build
+3. Once the image is built successfully, you can run a container using the following command:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+```bash
+docker run image-name
+```
 
-## Running unit tests
+If the container needs specifying port and volumes if the container needed it.
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+4. Test your application container
 
-## Running end-to-end tests
+## Customization
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+You can customize the Dockerfile example to fit your specific application needs. Here are a few areas you might consider modifying:
 
-## Further help
+- **Dependencies**: If your application requires additional dependencies, you can use the RUN command in the Dockerfile to install them. Make sure to update the appropriate package manager command based on your application setup.
+- **Environment Variables**: If your application requires environment variables, you can pass them to the container using the -e flag when running the docker run command.
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Contributing
+
+Contributions to this Dockerfile example are welcome! If you have any improvements or suggestions, feel free to submit a pull request.
+
+Please ensure that your changes align with the best practices and conventions outlined in the Docker and language/framework documentation.
+
+## Disclaimer
+
+The Dockerfile example provided in this repository is for educational and reference purposes. It is important to review and adapt it to meet the specific security and performance requirements of your case before using it in a production environment.
