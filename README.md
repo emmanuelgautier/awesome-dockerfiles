@@ -4,7 +4,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
 
 ## Contents
 
-- [Go](./go)
+- [Go](./go/)
 - Java
     - Spring Boot
 - Node.js
@@ -14,16 +14,16 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - Vue App
     - [React](./react/)
     - [Angular](./angular/)
-    - [Next](./next)
-    - Nuxt
-    - [Hono](./hono)
+    - [Next](./next/)
+    - [Nuxt](./nuxt/)
+    - [Hono](./hono/)
 - PHP
     - Laravel
     - Symfony
 - Python
     - Django
     - Flask
-    - [FastAPI](./python/fastapi)
+    - [FastAPI](./python/fastapi/)
 - Ruby
     - Ruby On Rails
 - [Rust](./rust/)
