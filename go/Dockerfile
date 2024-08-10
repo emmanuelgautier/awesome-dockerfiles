@@ -9,7 +9,7 @@ COPY . ./
 
 RUN CGO_ENABLED=0 GOOS=linux GO111MODULE=on go build -o /docker-go-server .
 
-FROM gcr.io/distroless/static-debian11:nonroot AS runner
+FROM gcr.io/distroless/static-debian12:nonroot AS runner
 
 WORKDIR /
 
