@@ -16,6 +16,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Angular](./angular/)
     - [Next](./next)
     - Nuxt
+    - [Hono](./hono)
 - PHP
     - Laravel
     - Symfony
