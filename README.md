@@ -11,7 +11,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Express.js with NPM](./express/express-npm/)
     - [Express.js with Yarn](./express/express-yarn/)
     - [NestJS](./nestjs/)
-    - Vue App
+    - [Vue App](./vue/)
     - [React](./react/)
     - [Angular](./angular/)
     - [Next](./next)
