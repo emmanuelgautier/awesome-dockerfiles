@@ -1,4 +1,4 @@
-FROM python:3.10 as requirements-builder
+FROM python:3.10 AS requirements-builder
 
 ENV POETRY_HOME="/opt/poetry"
 ENV POETRY_VERSION=1.6.1
