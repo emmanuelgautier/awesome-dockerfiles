@@ -1,4 +1,4 @@
-FROM node:lts as builder
+FROM node:lts AS builder
 
 WORKDIR /app
 
