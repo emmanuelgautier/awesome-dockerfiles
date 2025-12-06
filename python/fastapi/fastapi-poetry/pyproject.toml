@@ -6,8 +6,8 @@ authors = []
 
 [tool.poetry.dependencies]
 python = ">=3.10,<4.0"
-fastapi = "0.110.0"
-uvicorn = {extras = ["standard"], version = "0.23.2"}
+fastapi = "0.124.0"
+uvicorn = {extras = ["standard"], version = "0.38.0"}
 
 [tool.poetry.group.dev.dependencies]
 
