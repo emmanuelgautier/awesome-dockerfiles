@@ -1,3 +1,21 @@
 {
-  "extends": ["github>emmanuelgautier/renovate-config"]
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "github>emmanuelgautier/renovate-config"
+  ],
+  "minor": {
+    "enabled": false
+  },
+  "patch": {
+    "enabled": false
+  },
+  "packageRules": [
+    {
+      "description": "Require Dependency Dashboard approval for all updates to devDependencies.",
+      "matchDepTypes": [
+        "devDependencies"
+      ],
+      "enabled": false
+    }
+  ]
 }
