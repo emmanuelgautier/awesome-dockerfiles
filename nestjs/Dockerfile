@@ -6,7 +6,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package.json yarn.lock ./
 
-RUN yarn install --frozen-lockfile
+RUN yarn install --frozen-lockfile && yarn cache clean
 
 COPY . .
 
@@ -20,7 +20,7 @@ WORKDIR /usr/src/app
 # Install app dependencies
 COPY package.json yarn.lock ./
 
-RUN yarn install --production --frozen-lockfile
+RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 COPY --from=builder /usr/src/app/dist ./dist
 
