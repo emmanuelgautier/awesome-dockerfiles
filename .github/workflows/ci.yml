@@ -21,8 +21,25 @@ jobs:
       - id: set-matrix
         run: echo "matrix=$(find . -type f -name 'Dockerfile' -exec dirname {} \; | sort -u | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
 
-  docker-build:
+  docker-lint:
     needs: list-dockerfiles
+    runs-on: ubuntu-latest
+
+    strategy:
+      fail-fast: false
+      matrix:
+        dockerfile: ${{ fromJson(needs.list-dockerfiles.outputs.matrix) }}
+
+    steps:
+      - uses: actions/checkout@v6
+
+      - name: Lint Dockerfile
+        uses: hadolint/hadolint-action@v3.3.0
+        with:
+          dockerfile: ${{ matrix.dockerfile }}/Dockerfile
+
+  docker-build:
+    needs: [list-dockerfiles, docker-lint]
     runs-on: ubuntu-latest
 
     permissions:

@@ -1,3 +1,4 @@
+# hadolint ignore=DL3006
 FROM rust:1 AS builder
 
 WORKDIR /app
@@ -6,6 +7,7 @@ COPY . ./
 
 RUN cargo build --locked --release
 
+# hadolint ignore=DL3006
 FROM gcr.io/distroless/cc-debian12 AS runner
 
 ENV RUST_LOG="hello_world=debug,info"
