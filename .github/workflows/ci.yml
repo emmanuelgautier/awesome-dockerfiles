@@ -16,7 +16,7 @@ jobs:
       matrix: ${{ steps.set-matrix.outputs.matrix }}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - id: set-matrix
         run: echo "matrix=$(find . -type f -name 'Dockerfile' -exec dirname {} \; | sort -u | jq -R -s -c 'split("\n")[:-1]')" >> $GITHUB_OUTPUT
@@ -31,7 +31,7 @@ jobs:
         dockerfile: ${{ fromJson(needs.list-dockerfiles.outputs.matrix) }}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Lint Dockerfile
         uses: hadolint/hadolint-action@v3.3.0
@@ -51,7 +51,7 @@ jobs:
         dockerfile: ${{ fromJson(needs.list-dockerfiles.outputs.matrix) }}
 
     steps:
-      - uses: actions/checkout@v6
+      - uses: actions/checkout@v7
 
       - name: Create Docker Image name
         id: create-image-name
