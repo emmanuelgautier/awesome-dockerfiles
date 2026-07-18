@@ -1,30 +1,19 @@
-FROM node:lts AS development
+## build stage ##
+FROM node:lts-alpine3.21 AS build
 
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci
-
 COPY . .
 
-ENV CI=true
-ENV PORT=3000
-
-CMD [ "npm", "start" ]
-
-FROM development AS builder
+RUN npm install
 
 RUN npm run build
 
+## run stage ##
 FROM nginx:alpine
 
-# Copy config nginx
-COPY --from=builder /app/.nginx/nginx.conf /etc/nginx/conf.d/default.conf
+COPY --from=build /app/dist /usr/share/nginx/html
 
-WORKDIR /usr/share/nginx/html
+EXPOSE 80
 
-# Remove default nginx static assets
-RUN rm -rf ./*
-
-# Copy static assets from builder stage
-COPY --from=builder /app/dist .
+CMD ["nginx", "-g", "daemon off;"]
