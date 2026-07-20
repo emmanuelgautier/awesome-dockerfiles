@@ -1,7 +1,7 @@
-FROM python:3.10 AS requirements-builder
+FROM python:3.14 AS requirements-builder
 
 ENV POETRY_HOME="/opt/poetry"
-ENV POETRY_VERSION=1.6.1
+ENV POETRY_VERSION=2.4.1
 ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
 
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
@@ -12,7 +12,7 @@ WORKDIR /code
 COPY ./poetry.lock ./pyproject.toml ./
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM python:3.10-slim
+FROM python:3.14-slim
 
 WORKDIR /code
 
