@@ -1,18 +1,17 @@
-FROM python:3.10 AS requirements-builder
+FROM python:3.13 AS requirements-builder
 
-ENV POETRY_HOME="/opt/poetry"
-ENV POETRY_VERSION=1.6.1
-ENV PATH="$POETRY_HOME/bin:$VENV_PATH/bin:$PATH"
+ENV POETRY_VERSION=2.4.1
+ENV POETRY_PLUGIN_EXPORT_VERSION=1.9.0
 
-SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN curl -sSL https://install.python-poetry.org | POETRY_HOME=${POETRY_HOME} python3 - --version ${POETRY_VERSION}
+RUN pip install --no-cache-dir "poetry==${POETRY_VERSION}" \
+    && pip install --no-cache-dir "poetry-plugin-export==${POETRY_PLUGIN_EXPORT_VERSION}"
 
 WORKDIR /code
 
 COPY ./poetry.lock ./pyproject.toml ./
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
 
-FROM python:3.10-slim
+FROM python:3.13-slim
 
 WORKDIR /code
 
