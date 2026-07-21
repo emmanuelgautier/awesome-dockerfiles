@@ -67,11 +67,59 @@ jobs:
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: Build and push
+      - name: Build image
         uses: docker/build-push-action@v7
         with:
           context: ${{ matrix.dockerfile }}
-          push: ${{ github.ref == 'refs/heads/main' }}
+          load: true
+          tags: ${{ steps.create-image-name.outputs.image }}
+          cache-from: type=registry,ref=${{ steps.create-image-name.outputs.image }}
+          cache-to: type=inline
+
+      - name: Run image and test homepage
+        run: |
+          image="${{ steps.create-image-name.outputs.image }}"
+          container_id=$(docker run -d -P "$image")
+
+          cleanup() {
+            docker logs "$container_id" || true
+            docker rm -f "$container_id" > /dev/null
+          }
+          trap cleanup EXIT
+
+          port=""
+          for i in $(seq 1 10); do
+            port=$(docker inspect -f '{{range $p, $conf := .NetworkSettings.Ports}}{{(index $conf 0).HostPort}}{{end}}' "$container_id")
+            [ -n "$port" ] && break
+            status=$(docker inspect -f '{{.State.Status}}' "$container_id")
+            if [ "$status" != "running" ] && [ "$status" != "created" ]; then
+              echo "Container exited early with status: $status"
+              exit 1
+            fi
+            sleep 3
+          done
+          if [ -z "$port" ]; then
+            echo "No published port found for $image"
+            exit 1
+          fi
+
+          for i in $(seq 1 10); do
+            if curl -sf "http://localhost:$port/" > /dev/null; then
+              echo "Homepage reachable on port $port"
+              exit 0
+            fi
+            sleep 3
+          done
+
+          echo "Homepage not reachable on port $port"
+          exit 1
+
+      - name: Push image
+        if: ${{ github.ref == 'refs/heads/main' }}
+        uses: docker/build-push-action@v7
+        with:
+          context: ${{ matrix.dockerfile }}
+          push: true
           tags: ${{ steps.create-image-name.outputs.image }}
           cache-from: type=registry,ref=${{ steps.create-image-name.outputs.image }}
           cache-to: type=inline
