@@ -6,7 +6,7 @@
     "build": "tsc"
   },
   "dependencies": {
-    "@hono/node-server": "^1.19.6",
+    "@hono/node-server": "^2.0.0",
     "hono": "^4.10.7"
   },
   "devDependencies": {
