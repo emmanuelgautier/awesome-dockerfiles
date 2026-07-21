@@ -20,7 +20,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Hono](./hono/)
     - [Astro](./astro/)
 - PHP
-    - Laravel
+    - [Laravel](./php/laravel/)
     - Symfony
 - Python
     - Django
