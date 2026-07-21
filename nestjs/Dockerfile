@@ -24,4 +24,6 @@ RUN yarn install --production --frozen-lockfile && yarn cache clean
 
 COPY --from=builder /usr/src/app/dist ./dist
 
+EXPOSE 3000
+
 CMD [ "node", "dist/main.js" ]
