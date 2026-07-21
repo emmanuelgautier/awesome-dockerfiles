@@ -15,9 +15,9 @@ WORKDIR /app
 
 ENV NODE_ENV production
 
-COPY --from=builder /app/.output ./.output
+COPY --from=builder --chown=node:node /app/.output ./.output
 
-USER nuxt
+USER node
 
 EXPOSE 3000
 
