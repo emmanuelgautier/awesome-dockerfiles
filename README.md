@@ -1,4 +1,4 @@
-# Awesome DockerFiles [![Awesome](https://awesome.re/badge-flat.svg)](https://awesome.re)
+# Awesome DockerFiles
 
 Welcome to the Dockerfile Examples Repository! This repository is a comprehensive collection of Dockerfile examples for various programming languages, frameworks and package managers.
 
@@ -18,6 +18,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Next](./next/)
     - [Nuxt](./nuxt/)
     - [Hono](./hono/)
+    - [Astro](./astro/)
 - PHP
     - Laravel
     - Symfony
