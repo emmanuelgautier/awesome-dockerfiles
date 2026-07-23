@@ -6,7 +6,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
 
 - [Go](./go/)
 - Java
-    - Spring Boot
+    - [Spring Boot](./java/spring-boot/)
 - Node.js
     - [Express.js with NPM](./express/express-npm/)
     - [Express.js with Yarn](./express/express-yarn/)
