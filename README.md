@@ -21,7 +21,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Astro](./astro/)
 - PHP
     - [Laravel](./php/laravel/)
-    - Symfony
+    - [Symfony](./php/symfony/)
 - Python
     - Django
     - Flask
