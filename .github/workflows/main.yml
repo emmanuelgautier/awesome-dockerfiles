@@ -86,6 +86,9 @@ jobs:
             */symfony)
               echo "args=-e APP_SECRET=$(openssl rand -hex 32)" >> "$GITHUB_OUTPUT"
               ;;
+            */rails)
+              echo "args=-e SECRET_KEY_BASE=$(openssl rand -hex 64)" >> "$GITHUB_OUTPUT"
+              ;;
             *)
               echo "args=" >> "$GITHUB_OUTPUT"
               ;;

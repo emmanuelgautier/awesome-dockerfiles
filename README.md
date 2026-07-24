@@ -27,7 +27,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - Flask
     - [FastAPI](./python/fastapi/)
 - Ruby
-    - Ruby On Rails
+    - [Ruby On Rails](./ruby/rails/)
 - [Rust](./rust/)
 - .Net
 

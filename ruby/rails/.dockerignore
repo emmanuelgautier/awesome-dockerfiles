@@ -1,0 +1,16 @@
+.git
+.github
+.gitignore
+.bundle
+log/*
+tmp/*
+!log/.keep
+!tmp/.keep
+storage/*
+!storage/.keep
+db/*.sqlite3
+db/*.sqlite3-*
+.env
+.env.*
+README.md
+docker-compose*.yml
