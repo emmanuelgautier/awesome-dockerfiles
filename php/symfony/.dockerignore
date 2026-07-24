@@ -1,0 +1,12 @@
+.git
+.github
+.env.local
+.env.local.php
+.env.*.local
+var
+vendor
+tests
+.editorconfig
+.gitignore
+README.md
+docker-compose*.yml

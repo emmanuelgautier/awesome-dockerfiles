@@ -3,8 +3,8 @@ set -e
 
 if [ -f artisan ]; then
     if [ -z "$APP_KEY" ]; then
-        [ -f .env ] || cp .env.example .env
-        php artisan key:generate --force
+        echo "APP_KEY environment variable is not set. Refusing to start." >&2
+        exit 1
     fi
 
     php artisan package:discover --ansi

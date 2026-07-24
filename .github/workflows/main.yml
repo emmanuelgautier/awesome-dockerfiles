@@ -76,10 +76,25 @@ jobs:
           cache-from: type=registry,ref=${{ steps.create-image-name.outputs.image }}
           cache-to: type=inline
 
+      - name: Determine required runtime env vars
+        id: image-env
+        run: |
+          case "${{ matrix.dockerfile }}" in
+            */laravel)
+              echo "args=-e APP_KEY=base64:$(openssl rand -base64 32) -e SESSION_DRIVER=file -e CACHE_STORE=file -e QUEUE_CONNECTION=sync" >> "$GITHUB_OUTPUT"
+              ;;
+            */symfony)
+              echo "args=-e APP_SECRET=$(openssl rand -hex 32)" >> "$GITHUB_OUTPUT"
+              ;;
+            *)
+              echo "args=" >> "$GITHUB_OUTPUT"
+              ;;
+          esac
+
       - name: Run image and test homepage
         run: |
           image="${{ steps.create-image-name.outputs.image }}"
-          container_id=$(docker run -d -P "$image")
+          container_id=$(docker run -d -P ${{ steps.image-env.outputs.args }} "$image")
 
           cleanup() {
             docker logs "$container_id" || true
