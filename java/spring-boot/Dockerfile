@@ -15,7 +15,7 @@ RUN --mount=type=cache,target=/root/.m2 mvn -B -ntp -DskipTests package \
         --layers dependencies,spring-boot-loader,snapshot-dependencies,application \
         --destination target/extracted
 
-FROM eclipse-temurin:21-jre-jammy AS runner
+FROM eclipse-temurin:25-jre-jammy AS runner
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl=7.81.0-1ubuntu1.25 \
