@@ -30,6 +30,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Ruby On Rails](./ruby/rails/)
 - [Rust](./rust/)
 - .Net
+    - [Web API](./dotnet/webapi/)
 
 Each example comes with a documented Dockerfile that demonstrates best practices and provides a starting point for containerizing applications built with the corresponding language or framework. The examples cover production-like environments, and include instructions on how to build and run the containers.
 

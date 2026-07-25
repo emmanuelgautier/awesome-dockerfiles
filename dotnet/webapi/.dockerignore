@@ -1,0 +1,10 @@
+.git
+.github
+.gitignore
+.idea
+.vs
+bin
+obj
+Dockerfile
+.dockerignore
+README.md
