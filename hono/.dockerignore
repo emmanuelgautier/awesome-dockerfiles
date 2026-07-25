@@ -1,14 +1,12 @@
-test/
-node_modules
-dist
-*.tsbuildinfo
-npm-debug.log
 .git
 .github
 .gitignore
 Dockerfile
 .dockerignore
 README.md
+node_modules
+npm-debug.log
+dist
 .env
 .env.*
 !.env.example

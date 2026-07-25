@@ -1,4 +1,4 @@
-FROM composer:2 AS vendor
+FROM composer:2@sha256:5946476338742b200bb9ff88f8be56275ddae4b3949c72305cb0dbf10cfcb760 AS vendor
 
 WORKDIR /app
 
@@ -13,7 +13,7 @@ RUN composer install \
     --prefer-dist \
     --optimize-autoloader
 
-FROM node:lts AS assets
+FROM node:lts-slim@sha256:6f7b03f7c2c8e2e784dcf9295400527b9b1270fd37b7e9a7285cf83b6951452d AS assets
 
 WORKDIR /app
 
@@ -24,22 +24,28 @@ COPY . .
 
 RUN npm run build
 
-FROM php:8.5-apache AS base
+FROM php:8.5-apache@sha256:eacc0d98992683cb46e4f8f44b2418a0323855dc8b59d32dc54f7a9b90a966dd AS base
+
+LABEL org.opencontainers.image.title="Laravel Docker Example" \
+      org.opencontainers.image.description="Laravel application containerized with Docker" \
+      org.opencontainers.image.source="https://github.com/emmanuelgautier/awesome-dockerfiles" \
+      org.opencontainers.image.licenses="MIT"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
-        libicu-dev=76.1-4 \
-        libzip-dev=1.11.3-2 \
-        libpng-dev=1.6.48-1+deb13u5 \
-        libjpeg62-turbo-dev=1:2.1.5-4 \
+        curl=8.14.1-2+deb13u4 \
         libfreetype-dev=2.13.3+dfsg-1+deb13u1 \
+        libicu-dev=76.1-4 \
+        libjpeg62-turbo-dev=1:2.1.5-4 \
+        libpng-dev=1.6.48-1+deb13u5 \
+        libzip-dev=1.11.3-2 \
         unzip=6.0-29 \
     && docker-php-ext-configure gd --with-freetype --with-jpeg \
     && docker-php-ext-install -j"$(nproc)" \
-        pdo_mysql \
-        intl \
-        zip \
-        gd \
         bcmath \
+        gd \
+        intl \
+        pdo_mysql \
+        zip \
     && pecl install redis \
     && docker-php-ext-enable redis \
     && a2enmod rewrite \
@@ -63,6 +69,9 @@ COPY docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
 EXPOSE 80
+
+HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
+    CMD curl --fail http://localhost/ || exit 1
 
 ENTRYPOINT ["entrypoint.sh"]
 CMD ["apache2-foreground"]

@@ -42,8 +42,7 @@ Feel free to modify and adapt the examples to suit your specific requirements. D
 
 ## Documentations
 
-- [Best practices for writing Dockerfiles](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/)
-- [Security best practices](https://docs.docker.com/develop/security-best-practices/)
+- [Docker Best practices](https://docs.docker.com/build/building/best-practices/)
 
 ## Contributing
 

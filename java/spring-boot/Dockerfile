@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM maven:3.9-eclipse-temurin-21 AS builder
+FROM maven:3.9-eclipse-temurin-25@sha256:7e461cec477077c1d9e50b13df8aef9018764410f4c4cd7c34803f10c4c99e4c AS builder
 
 WORKDIR /app
 
@@ -15,7 +15,12 @@ RUN --mount=type=cache,target=/root/.m2 mvn -B -ntp -DskipTests package \
         --layers dependencies,spring-boot-loader,snapshot-dependencies,application \
         --destination target/extracted
 
-FROM eclipse-temurin:21-jre-jammy AS runner
+FROM eclipse-temurin:25-jre-jammy@sha256:b8ba5fca9d88b6ecc3a46c8e75b744f84aca9a9d08587901b5ab480baf641ab5 AS runner
+
+LABEL org.opencontainers.image.title="Spring Boot Docker Example" \
+      org.opencontainers.image.description="Spring Boot application containerized with Docker" \
+      org.opencontainers.image.source="https://github.com/emmanuelgautier/awesome-dockerfiles" \
+      org.opencontainers.image.licenses="MIT"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl=7.81.0-1ubuntu1.25 \
