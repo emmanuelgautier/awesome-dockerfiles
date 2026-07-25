@@ -24,7 +24,7 @@ Welcome to the Dockerfile Examples Repository! This repository is a comprehensiv
     - [Symfony](./php/symfony/)
 - Python
     - Django
-    - Flask
+    - [Flask](./python/flask/)
     - [FastAPI](./python/fastapi/)
 - Ruby
     - [Ruby On Rails](./ruby/rails/)
