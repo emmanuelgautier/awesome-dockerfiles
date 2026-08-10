@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM python:3.13-slim AS builder
+FROM python:3.14-slim@sha256:cea0e6040540fb2b965b6e7fb5ffa00871e632eef63719f0ea54bca189ce14a6 AS builder
 
 WORKDIR /app
 
@@ -15,7 +15,12 @@ COPY ./app ./app
 
 RUN python app/manage.py collectstatic --noinput
 
-FROM python:3.13-slim AS runtime
+FROM python:3.14-slim@sha256:cea0e6040540fb2b965b6e7fb5ffa00871e632eef63719f0ea54bca189ce14a6 AS runtime
+
+LABEL org.opencontainers.image.title="Django Docker Example" \
+      org.opencontainers.image.description="Django application containerized with Docker" \
+      org.opencontainers.image.source="https://github.com/emmanuelgautier/awesome-dockerfiles" \
+      org.opencontainers.image.licenses="MIT"
 
 RUN apt-get update \
     && apt-get install -y --no-install-recommends curl=8.14.1-2+deb13u4 \

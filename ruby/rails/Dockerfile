@@ -1,6 +1,6 @@
-ARG RUBY_VERSION=3.4.10
+ARG RUBY_VERSION=4.0.6
 
-FROM ruby:${RUBY_VERSION}-slim AS base
+FROM ruby:${RUBY_VERSION}-slim@sha256:abd7528c4df35d151e2643d5efb845e442a26e36a4babc6459bee508619137a2 AS base
 
 WORKDIR /rails
 
@@ -27,6 +27,11 @@ RUN SECRET_KEY_BASE_DUMMY=1 ./bin/rails assets:precompile \
     && rm -rf log/* tmp/cache
 
 FROM base AS runtime
+
+LABEL org.opencontainers.image.title="Ruby on Rails Docker Example" \
+      org.opencontainers.image.description="Ruby on Rails application containerized with Docker" \
+      org.opencontainers.image.source="https://github.com/emmanuelgautier/awesome-dockerfiles" \
+      org.opencontainers.image.licenses="MIT"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \
         curl=8.14.1-2+deb13u4 \
