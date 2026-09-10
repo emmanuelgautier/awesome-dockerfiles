@@ -15,7 +15,7 @@ RUN --mount=type=cache,target=/root/.m2 mvn -B -ntp -DskipTests package \
         --layers dependencies,spring-boot-loader,snapshot-dependencies,application \
         --destination target/extracted
 
-FROM eclipse-temurin:25-jre-jammy@sha256:b8ba5fca9d88b6ecc3a46c8e75b744f84aca9a9d08587901b5ab480baf641ab5 AS runner
+FROM eclipse-temurin:25-jre-jammy@sha256:20a695e74d47fb29cda1cbad5d9ee6cfad4ac6e88a8e048ed6265cede1e71f5e AS runner
 
 LABEL org.opencontainers.image.title="Spring Boot Docker Example" \
       org.opencontainers.image.description="Spring Boot application containerized with Docker" \
