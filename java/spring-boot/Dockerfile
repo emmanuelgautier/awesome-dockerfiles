@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM maven:3.9-eclipse-temurin-25@sha256:7e461cec477077c1d9e50b13df8aef9018764410f4c4cd7c34803f10c4c99e4c AS builder
+FROM maven:3.9-eclipse-temurin-25@sha256:0e3f1c4394674505f73525188b8005f521ef3c786c651cb61432b2db3517087b AS builder
 
 WORKDIR /app
 
