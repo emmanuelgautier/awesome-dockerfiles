@@ -16,7 +16,7 @@ FROM development AS builder
 
 RUN npm run build
 
-FROM nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752
+FROM nginx:alpine@sha256:892bb2152464f0c5d8972593a5f5afaf8054552580b699d95f8ff4af08c2d33d
 
 LABEL org.opencontainers.image.title="Vue Docker Example" \
       org.opencontainers.image.description="Vue application containerized with Docker" \
