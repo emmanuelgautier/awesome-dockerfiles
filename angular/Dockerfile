@@ -16,7 +16,7 @@ FROM development AS builder
 
 RUN npm run build
 
-FROM nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752
+FROM nginx:alpine@sha256:fb4658584bd9a916ffb6f6e365f97c25cfdb2923801f551ea08356e695f14ff7
 
 LABEL org.opencontainers.image.title="Angular Docker Example" \
       org.opencontainers.image.description="Angular application containerized with Docker" \
