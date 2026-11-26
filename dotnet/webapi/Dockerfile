@@ -1,6 +1,6 @@
 # syntax=docker/dockerfile:1
 
-FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:ed034a8bf0b24ded0cbbac07e17825d8e9ebfe21e308191d0f7421eaf5ad4664 AS builder
+FROM mcr.microsoft.com/dotnet/sdk:10.0@sha256:8c6edfb26c85153f236d26efebd9ad349aec403583f343f201ee67838b23658d AS builder
 
 WORKDIR /src
 
@@ -14,7 +14,7 @@ COPY . .
 RUN --mount=type=cache,target=/root/.nuget/packages \
     dotnet publish WebApi.csproj -c Release -o /app/publish --no-restore
 
-FROM mcr.microsoft.com/dotnet/aspnet:10.0-noble@sha256:1fa23fc4872d95fd71c2833ebe65d7e84a43b2d51a31d119516852f13d9505a7 AS runner
+FROM mcr.microsoft.com/dotnet/aspnet:10.0-noble@sha256:aac50ceef10391e78a899e3d2ccd00bbafa2dcb56ccf4586cbccf00edb84fc21 AS runner
 
 LABEL org.opencontainers.image.title=".NET Web API Docker Example" \
       org.opencontainers.image.description=".NET Web API application containerized with Docker" \
