@@ -16,7 +16,7 @@ FROM development AS builder
 
 RUN npm run build
 
-FROM nginx:alpine@sha256:4a73073bd557c65b759505da037898b61f1be6cbcc3c2c3aeac22d2a470c1752
+FROM nginx:alpine@sha256:7fc0fb4af7bf006aeb31aea88069976060f8f0a0a86b667126742cc17f4e31ae
 
 LABEL org.opencontainers.image.title="Astro Docker Example" \
       org.opencontainers.image.description="Astro application containerized with Docker" \
